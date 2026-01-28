@@ -1,0 +1,70 @@
+N = deltaT/t
+N = 6*10^-3 * 950/10^-2.5
+N = 1802.498266296...
+
+- Thrust power of the stationary mode
+Fp = (F*Ve)/2
+Fp = (50000*(950*9.80665)/2
+Fp = 232,907,937.5 watts
+- NOTE: this engine power in stationary mode is also the lower limit of engine power in pulsed mode
+
+- When it says that N is the limit to thrust amplification, I'll assume that it means that as a multiple.
+
+pulsedpower = Fp * N
+pulsedpower = 232907937.5 * 1802.498266296...
+pulsedpower = 420,281,969,425.3271245... watts
+
+pulsedamplifiedIsp = Isp(in stationary mode)*sqrt[(fn*N)+1]
+pulsedamplifiedIsp = 950*sqrt[(0.05*1802.498266296)+1]
+pulsedamplifiedIsp = 9,068.640155315845368 seconds
+
+pulsedwasteheatIspAmp = (pulsedpower*(1-fn[as decimal]))-Fp
+pulsedwasteheatIspAmp = (420281969425.3271245*(1-0.05))-232907937.5
+pulsedwasteheatIspAmp = 399,034,963,017 watts
+- NOTE: pulsedwasteheat only applies to the Isp-amplifying pulsed mode. in thrust-amplifying pulsed mode, the excess heat is mostly carried away by the increased mass flow.
+
+pulsedamplifiedthrust = (2*pulsedpower/Ve)*fn[as decimal]
+pulsedamplifiedthrust = (2*420281969425.3271245/(950*9.80665))*(1-0.05)
+pulsedamplifiedthrust = 85,713,667.6491 newtons
+
+pulsedwasteheatFpAmp = pulsedpower*neutronratio[as decimal]
+pulsedwasteheatFpAmp = 420281969425.3271245*0.05
+pulsedwasteheatFpAmp = 21,014,098,471.3 watts
+
+--------------------------------------------
+
+- find our engine's consumption of u235/second
+
+1kg uranium = 24,000,000 kw*h (theoretically, we'll address this later
+24000000kw*h = 86,400,000,000 kilojoules
+86400000000kJ = 86,400,000,000,000 joules
+
+- First find out how many seconds our engine can run at full power with 1 kg of u-235
+t(s) = J / pulsedpower 
+t(s) = 86400000000000J / 420281969425.3271245...W
+t(s) = 205.576270897860205...seconds
+
+- from this find our engines consumption rate of U-235/second
+u235(kg)/s = 1(s) / t(s)
+u235(kg)/s = 1 / 205.576270897860205
+u235(kg)/s = 0.00486437464612269 u235(kg)/s
+
+- next, find the amount of the resource EnrichedUranium used per second.
+- Note, KSP units are measured in metric tons, hence the / 1000 to the u235/s
+
+ErU/s = (u235(kg)/s /1000) / 1ErU(t)
+ErU/s = (0.00486437464612269/1000) / 0.01097000000
+ErU/s = 0.00044342521842504 ErU/s
+
+- according to Atomic Rockets, if a fuel rod is salted with 'burnable poisons', you can get 50% fuel burnup rather than a mere 15%. With this information, we assume a *2 multiplier of fuel burn rate.
+0.00044342521842504 * 2 = 0.000886850436850079
+
+----------------------------------------------
+
+
+
+
+
+
+
+
